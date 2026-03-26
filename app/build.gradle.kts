@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -33,6 +34,9 @@ android {
     buildFeatures {
         compose = true
     }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 
 dependencies {
@@ -47,10 +51,10 @@ dependencies {
 
     // Firebase BOM + Core
     implementation(platform("com.google.firebase:firebase-bom:34.11.0"))
-    implementation("com.google.firebase:firebase-auth-ktx")
-    implementation("com.google.firebase:firebase-firestore-ktx")
-    implementation("com.google.firebase:firebase-messaging-ktx")
-    implementation("com.google.firebase:firebase-config-ktx")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("com.google.firebase:firebase-config")
     implementation("com.google.firebase:firebase-analytics")
 
     // Google Sign-In
@@ -60,7 +64,7 @@ dependencies {
 
     // Navigation & Biometric
     implementation("androidx.navigation:navigation-compose:2.8.3")
-    implementation("androidx.biometric:biometric-ktx:1.1.0")
+    implementation("androidx.biometric:biometric:1.2.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
